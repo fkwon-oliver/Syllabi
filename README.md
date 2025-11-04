@@ -1,7 +1,22 @@
 # Syllabi
 
 An open-source AI-powered chatbot platform with advanced knowledge base integration, multi-modal support, and seamless integrations.
+## 🤝 Looking for Maintainers
 
+I'm starting a new job and won't have bandwidth to actively maintain this. **If you're interested in helping maintain this project**, here's how:
+
+**Start contributing:**
+- Submit quality PRs
+- Help triage issues
+- Improve documentation
+- Review other people's PRs (even without merge rights, reviews are valuable!)
+
+**Then just ask:**
+If you've made meaningful contributions and want write access to help maintain the project, just open an issue or comment saying so. I'm happy to add contributors who show they understand the codebase and want to help.
+
+**No formal process, no committee, no bureaucracy.** Just good vibes and good code. ✌️
+
+**Or fork it!** If you want to take the project in a different direction or I'm not responsive enough, forking is totally fine. That's the beauty of open source.
 ## 🌟 Features
 
 - **AI-Powered Chatbots**: Build intelligent chatbots with OpenAI GPT-4 and other LLMs
@@ -122,3 +137,4 @@ This project is licensed under the MIT License - see the [LICENSE](./LICENSE) fi
 ---
 
 Made with ❤️ by Achu Shankar
+
