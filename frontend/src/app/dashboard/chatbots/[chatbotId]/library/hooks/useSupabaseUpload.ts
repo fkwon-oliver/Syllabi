@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { createClient } from '@/utils/supabase/client'; // Ensure this path is correct
+import { BUCKETS } from '@/lib/supabaseBuckets';
 
 interface UseSupabaseUploadOptions {
   bucketName?: string;
@@ -24,7 +25,7 @@ export function useSupabaseUpload(chatbotId: string, options?: UseSupabaseUpload
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState<UploadProgress>({ percentage: null, loaded: 0, total: 0 });
   const supabase = createClient();
-  const bucketName = options?.bucketName || 'documents'; // Corrected default bucket
+  const bucketName = options?.bucketName || BUCKETS.CHAT_FILES; // Use BUCKETS.CHAT_FILES as default
 
   // Generate a unique filename based on conflict resolution
   const generateFileName = (originalName: string, resolution: ConflictResolution): string => {
