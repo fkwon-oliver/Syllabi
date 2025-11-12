@@ -8,6 +8,7 @@ import shutil
 import functools
 
 from app.core.supabase_client import get_supabase_client
+from app.core.buckets import DOCS
 from app.schemas.reference import (
     OriginalFileFormatEnum, 
     IngestionSourceEnum,
@@ -250,7 +251,7 @@ async def _async_process_url_task_actual(task_identifier: str, reference_id: str
                     logger.info(f"[Task ID: {task_uuid}] Uploading direct PDF '{pdf_filename}' to Supabase...")
                     storage_path = f"{str(chatbot_uuid)}/url_sourced/{pdf_filename}" # Added 'url_sourced' subfolder
                     with open(local_pdf_path_for_pipeline, "rb") as f_pdf:
-                        db.storage.from_("documents").upload(
+                        db.storage.from_(DOCS).upload(
                             path=storage_path,
                             file=f_pdf,
                             file_options={"content-type": "application/pdf", "upsert": "false"}
@@ -317,7 +318,7 @@ async def _async_process_url_task_actual(task_identifier: str, reference_id: str
                     logger.info(f"[Task ID: {task_uuid}] Uploading converted PDF '{converted_pdf_filename}' to Supabase...")
                     storage_path_for_converted_pdf = f"{str(chatbot_uuid)}/url_sourced/{converted_pdf_filename}" # Added 'url_sourced'
                     with open(local_pdf_path_for_pipeline, "rb") as f_pdf:
-                        db.storage.from_("documents").upload(
+                        db.storage.from_(DOCS).upload(
                             path=storage_path_for_converted_pdf,
                                                 file=f_pdf,
                             file_options={"content-type": "application/pdf", "upsert": "false"}

@@ -11,6 +11,7 @@ from uuid import UUID, uuid4
 
 from app.worker.celery_app import celery_app
 from app.core.supabase_client import get_supabase_client
+from app.core.buckets import DOCS
 from app.services.notion_service import NotionService
 from app.crud.crud_task import update_task
 from app.crud.crud_reference import create_reference
@@ -197,7 +198,7 @@ async def _upload_to_supabase_storage(
             file_content = f.read()
         
         # Upload to Supabase storage
-        supabase.storage.from_("documents").upload(
+        supabase.storage.from_(DOCS).upload(
             path=storage_path,
             file=file_content,
             file_options={"content-type": content_type, "upsert": "false"}
