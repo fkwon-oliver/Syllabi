@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
 import { v4 as uuidv4 } from 'uuid'; // For more robust unique names
+import { BUCKETS } from '@/lib/supabaseBuckets';
 
 const MAX_FILE_SIZE_MB = 2;
 const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
 // Looser validation for fetched images initially, can be tightened
 const ALLOWED_FETCHED_IMAGE_TYPES = ['image/png', 'image/jpeg', 'image/gif', 'image/webp', 'image/svg+xml']; 
-const BUCKET_NAME = 'chatbot-assets';
+const BUCKET_NAME = BUCKETS.ASSETS;
 
 async function streamToArrayBuffer(readableStream: ReadableStream<Uint8Array>): Promise<ArrayBuffer> {
   const reader = readableStream.getReader();

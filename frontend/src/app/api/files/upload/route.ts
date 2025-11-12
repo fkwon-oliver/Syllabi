@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
+import { BUCKETS } from '@/lib/supabaseBuckets';
 
 // Allowed file types and their corresponding MIME types
 const ALLOWED_MIME_TYPES = {
@@ -19,7 +20,7 @@ const ALLOWED_MIME_TYPES = {
 } as const;
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
-const BUCKET_NAME = 'chat-files';
+const BUCKET_NAME = BUCKETS.CHAT_FILES;
 
 /**
  * Validates file type and size

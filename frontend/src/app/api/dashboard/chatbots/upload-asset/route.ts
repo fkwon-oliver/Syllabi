@@ -1,10 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/utils/supabase/server';
+import { BUCKETS } from '@/lib/supabaseBuckets';
 
 const MAX_FILE_SIZE_MB = 2;
 const MAX_FILE_SIZE_BYTES = MAX_FILE_SIZE_MB * 1024 * 1024;
 const ALLOWED_MIME_TYPES = ['image/png', 'image/jpeg', 'image/gif', 'image/svg+xml', 'image/webp'];
-const BUCKET_NAME = 'chatbot-assets';
+const BUCKET_NAME = BUCKETS.ASSETS;
 
 export async function POST(request: NextRequest) {
   const supabase = await createClient();
